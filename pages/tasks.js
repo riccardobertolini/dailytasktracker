@@ -1,11 +1,9 @@
-// pages/tasks.js
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { Plus, Trash2 } from "lucide-react";
-import TaskModal from "../components/TaskModal";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";

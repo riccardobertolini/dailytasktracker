@@ -1,4 +1,3 @@
-// components/TaskButton.js
 import { useState } from "react";
 import { useRouter } from "next/router";
 import TaskModal from "./TaskModal";
@@ -12,8 +11,9 @@ export default function TaskButton({ task, onDone }) {
     return (
         <>
             <Button
-                className="btn btn-info btn-lg text-light "
+                className="btn btn-lg text-light"
                 onClick={() => setOpen(true)}
+                style={{marginRight: 20, marginBottom: 20, height: 80}}
             >
                 {label}
             </Button>

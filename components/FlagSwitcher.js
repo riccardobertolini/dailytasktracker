@@ -1,4 +1,3 @@
-// components/FlagSwitcher.js
 import { useRouter } from "next/router";
 
 export default function FlagSwitcher() {

@@ -1,4 +1,3 @@
-// components/TaskModal.js
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useTranslation } from "next-i18next";
@@ -30,7 +29,7 @@ export default function TaskModal({ task, onClose, onComplete }) {
             </Modal.Header>
 
             <Modal.Body className="d-flex flex-column gap-2">
-                {["riccardo", "stefan", "beide"].map((u) => (
+                {["stefan", "riccardo", "beide"].map((u) => (
                     <Button
                         key={u}
                         variant={u === user ? "primary" : "outline-secondary"}

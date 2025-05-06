@@ -1,4 +1,3 @@
-// pages/analytics.js
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -58,9 +57,8 @@ export default function Analytics() {
 
     useEffect(() => {
         fetchData();
-    }, [locale]);            // ricalcolare se cambio lingua
+    }, [locale]);
 
-    /* -- rendering ----------------------------------- */
     return (
         <div className="container-sm py-4 pb-5 min-vh-100">
             <h1 className="h4 mb-4 text-center">{t("analytics_title")}</h1>
@@ -83,7 +81,6 @@ export default function Analytics() {
                 </Card>
             ))}
 
-            {/* totali globali */}
             <h2 className="h6 mt-4 mb-2">{t("totals")}</h2>
             {Object.entries(data.totals).map(([task, counts]) => (
                 <p key={task} className="mb-2">

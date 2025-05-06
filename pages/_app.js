@@ -1,4 +1,3 @@
-// pages/_app.js
 import "bootstrap/dist/css/bootstrap.min.css";
 import { appWithTranslation } from "next-i18next";
 import Navbar from "../components/Navbar";

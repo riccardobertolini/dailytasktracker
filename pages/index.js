@@ -1,4 +1,3 @@
-// pages/index.js  (o pages/index.tsx)
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import TaskButton from "../components/TaskButton";

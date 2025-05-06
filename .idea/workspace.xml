@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81176de7-109a-4ab2-8574-7d320eab07c3" name="Changes" comment="deploy analytics.js" />
+    <list default="true" id="81176de7-109a-4ab2-8574-7d320eab07c3" name="Changes" comment="deploy extra files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FlagSwitcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/FlagSwitcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TaskButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TaskButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TaskModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TaskModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/analytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/analytics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tasks.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +80,7 @@
       <updated>1746532417573</updated>
       <workItem from="1746532418764" duration="4604000" />
       <workItem from="1746539107018" duration="3300000" />
-      <workItem from="1746549751644" duration="3492000" />
+      <workItem from="1746549751644" duration="5424000" />
     </task>
     <task id="LOCAL-00001" summary="deploy data">
       <option name="closed" value="true" />
@@ -88,7 +98,31 @@
       <option name="project" value="LOCAL" />
       <updated>1746552902117</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="deploy extra files">
+      <option name="closed" value="true" />
+      <created>1746553342609</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746553342609</updated>
+    </task>
+    <task id="LOCAL-00004" summary="deploy extra files">
+      <option name="closed" value="true" />
+      <created>1746553562287</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746553562287</updated>
+    </task>
+    <task id="LOCAL-00005" summary="deploy extra files">
+      <option name="closed" value="true" />
+      <created>1746553979438</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746553979438</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,6 +131,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deploy data" />
     <MESSAGE value="deploy analytics.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy analytics.js" />
+    <MESSAGE value="deploy extra files" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy extra files" />
   </component>
 </project>

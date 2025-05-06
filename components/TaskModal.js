@@ -9,7 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 export default function TaskModal({ task, onClose, onComplete }) {
     const { t } = useTranslation("common");
     const { locale } = useRouter();
-    const [user, setUser] = useState("riccardo");
+    const [user, setUser] = useState("");
     const [busy, setBusy] = useState(false);
 
     const name = locale === "it" ? task.name_it : task.name_de;

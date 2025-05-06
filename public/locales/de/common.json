@@ -1,0 +1,18 @@
+{
+  "home_title": "Startseite",
+  "tasks_title": "Aufgaben",
+  "analytics_title": "Analyse",
+  "completed": "Erledigt",
+  "add_task": "Aufgabe hinzufügen",
+  "delete": "\uD83D\uDDD1\uFE0F",
+  "riccardo": "Riccardo",
+  "stefan": "Stefan",
+  "beide": "Beide",
+  "no_tasks": "Keine Aufgabe verfügbar",
+  "nav_home": "Startseite",
+  "nav_tasks": "Aufgaben",
+  "nav_analytics": "Analyse",
+  "nav_stats": "Vollständig",
+  "task_name_it": "Name (Italienisch)",
+  "task_name_de": "Name (Schwiiz‑Dütsch)"
+}

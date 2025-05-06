@@ -11,9 +11,9 @@ export default function TaskButton({ task, onDone }) {
     return (
         <>
             <Button
-                className="btn btn-lg text-light"
+                className="btn text-light"
                 onClick={() => setOpen(true)}
-                style={{marginRight: 20, marginBottom: 20, height: 80}}
+                style={{marginRight: 5, marginBottom: 5, height: 70, fontSize: 14, maxWidth: '50%'}}
             >
                 {label}
             </Button>

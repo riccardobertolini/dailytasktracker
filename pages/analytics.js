@@ -1,65 +1,104 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+// pages/analytics.js
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
 
 export default function Analytics() {
-    const { t } = useTranslation('common');
-    const [byDay, setByDay] = useState({});
+    const { t } = useTranslation("common");
+    const { locale } = useRouter();
+    const [data, setData] = useState({ grouped: {}, totals: {} });
 
+    /* -- fetch --------------------------------------- */
     const fetchData = async () => {
-        let { data: comps } = await supabase
-            .from('completions')
-            .select('*, tasks(name)')
-            .order('completed_at', { ascending: false });
+        const { data: comps, error } = await supabase
+            .from("completions")
+            .select("task_id, user, completed_at, tasks(name_it, name_de)")
+            .order("completed_at", { ascending: false });
 
+        if (error) {
+            console.error(error);
+            return;
+        }
+
+        /* -- transform --------------------------------- */
         const grouped = {};
-        const totals = {};
+        const totals  = {};
 
-        comps?.forEach(c => {
-            const day = new Date(c.completed_at).toLocaleDateString('it-IT', {
-                day:'2-digit', month:'long', year:'numeric'
+        comps.forEach((c) => {
+            const taskName = locale === "it" ? c.tasks.name_it : c.tasks.name_de;
+            const dayKey = new Date(c.completed_at).toLocaleDateString(locale, {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
             });
-            grouped[day] = grouped[day] || [];
-            grouped[day].push({
-                name: c.tasks.name,
+
+            /* elenco per giorno */
+            grouped[dayKey] ??= [];
+            grouped[dayKey].push({
+                name: taskName,
                 user: t(c.user),
-                time: new Date(c.completed_at).toLocaleTimeString('it-IT', {hour:'2-digit',minute:'2-digit'})
+                time: new Date(c.completed_at).toLocaleTimeString(locale, {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                }),
             });
 
-            const key = c.tasks.name;
-            totals[key] = totals[key] || { riccardo:0, stefan:0, beide:0 };
-            totals[key][c.user]++;
+            /* contatori totali */
+            totals[taskName] ??= { riccardo: 0, stefan: 0, beide: 0 };
+            totals[taskName][c.user]++;
         });
 
-        setByDay({ grouped, totals });
+        setData({ grouped, totals });
     };
 
-    useEffect(() => { fetchData() }, []);
+    useEffect(() => {
+        fetchData();
+    }, [locale]);            // ricalcolare se cambio lingua
 
+    /* -- rendering ----------------------------------- */
     return (
-        <div className="min-h-screen p-4 max-w-sm mx-auto">
-            <h1 className="text-2xl font-bold mb-4">{t('analytics_title')}</h1>
-            {Object.entries(byDay.grouped || {}).map(([day, entries])=>(
-                <div key={day} className="mb-6">
-                    <h2 className="text-lg font-semibold mb-2">{day}</h2>
-                    <ul className="space-y-1">
-                        {entries.map((e,i)=>(
-                            <li key={i} className="flex justify-between">
-                                <span>• {e.name} - {e.user}</span>
-                                <span>{e.time}</span>
-                            </li>
+        <div className="container-sm py-4 pb-5 min-vh-100">
+            <h1 className="h4 mb-4 text-center">{t("analytics_title")}</h1>
+
+            {/* blocchi per giorno */}
+            {Object.entries(data.grouped).map(([day, entries]) => (
+                <Card key={day} className="mb-4">
+                    <Card.Header className="fw-semibold">{day}</Card.Header>
+                    <Table borderless size="sm" className="mb-0">
+                        <tbody>
+                        {entries.map((e, i) => (
+                            <tr key={i}>
+                                <td className="ps-3">{e.name}</td>
+                                <td>{e.user}</td>
+                                <td className="text-end pe-3">{e.time}</td>
+                            </tr>
                         ))}
-                    </ul>
-                </div>
+                        </tbody>
+                    </Table>
+                </Card>
             ))}
-            <div className="border-t pt-4">
-                {Object.entries(byDay.totals || {}).map(([task, counts])=>(
-                    <p key={task} className="mb-2">
-                        <strong>{task}</strong> – {t('riccardo')}: {counts.riccardo}, {t('stefan')}: {counts.stefan}, {t('beide')}: {counts.beide}
-                    </p>
-                ))}
-            </div>
+
+            {/* totali globali */}
+            <h2 className="h6 mt-4 mb-2">{t("totals")}</h2>
+            {Object.entries(data.totals).map(([task, counts]) => (
+                <p key={task} className="mb-2">
+                    <strong>{task}</strong>{" "}
+                    <Badge bg="primary" className="me-1">
+                        {t("riccardo")}: {counts.riccardo}
+                    </Badge>
+                    <Badge bg="secondary" className="me-1">
+                        {t("stefan")}: {counts.stefan}
+                    </Badge>
+                    <Badge bg="success">
+                        {t("beide")}: {counts.beide}
+                    </Badge>
+                </p>
+            ))}
         </div>
     );
 }
@@ -67,7 +106,7 @@ export default function Analytics() {
 export async function getStaticProps({ locale }) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['common']))
-        }
+            ...(await serverSideTranslations(locale, ["common"])),
+        },
     };
 }

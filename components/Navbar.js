@@ -13,8 +13,7 @@ export default function BottomBar() {
     const tabs = [
         { href: "/",         icon: Home,      label: t("nav_home")      },
         { href: "/tasks",    icon: Clock,     label: t("nav_tasks")     },
-        { href: "/analytics",href: "/analytics", icon: BarChart2, label: t("nav_analytics") },
-        { href: "/stats",    icon: PieChart,  label: t("nav_stats")     },
+        { href: "/analytics",href: "/analytics", icon: BarChart2, label: t("nav_analytics") }
     ];
 
     return (

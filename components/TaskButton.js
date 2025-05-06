@@ -12,8 +12,7 @@ export default function TaskButton({ task, onDone }) {
     return (
         <>
             <Button
-                variant="outline-success"
-                className="w-100 py-3 mb-3 rounded-pill fs-6"
+                className="btn btn-info btn-lg text-light "
                 onClick={() => setOpen(true)}
             >
                 {label}
